@@ -1,0 +1,144 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 40px 20px; */
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 0px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app-header {
+  width: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.vibethon-banner {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.app-content {
+  flex: 1;
+  padding: 40px 60px;
+  background: #ffffff;
+  position: relative;
+}
+
+.user-content {
+  position: relative;
+}
+
+.admin-access-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  min-width: 120px;
+  height: auto;
+  padding: 14px 20px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 1000;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.admin-access-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+}
+
+.admin-access-button:active {
+  transform: translateY(-1px);
+}
+
+.app-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.app-footer img {
+  height: 60px;
+  width: auto;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.htc-footer-logo {
+
+  height: 80px;
+  width: auto;
+  opacity: 0.95;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.htc-footer-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .app-content {
+    padding: 20px;
+  }
+
+  .vibethon-banner {
+    max-height: 200px;
+  }
+
+  .admin-access-button {
+    min-width: 110px;
+    padding: 12px 18px;
+    font-size: 15px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
