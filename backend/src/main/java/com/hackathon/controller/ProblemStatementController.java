@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,20 +16,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/problem-statements")
 @RequiredArgsConstructor
 public class ProblemStatementController {
-    
+
     private final ProblemStatementService problemStatementService;
-    
+
     @GetMapping
     public ResponseEntity<Page<ProblemStatementDTO>> getAllProblems(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        
-        Pageable pageable = PageRequest.of(page, size);
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").ascending());
         Page<ProblemStatementDTO> problems = problemStatementService.getAllProblemStatements(pageable);
-        
+
         return ResponseEntity.ok(problems);
     }
-    
+
     @GetMapping("/{id}")
     public ResponseEntity<ProblemStatementDTO> getProblemById(@PathVariable Long id) {
         ProblemStatement problem = problemStatementService.getProblemStatementById(id);
@@ -39,7 +40,7 @@ public class ProblemStatementController {
         dto.setSelectionCount(problem.getCurrentUsers());
         return ResponseEntity.ok(dto);
     }
-    
+
     @PostMapping
     public ResponseEntity<ApiResponse<Void>> createProblem(@RequestBody ProblemStatement problem) {
         problemStatementService.createProblemStatement(problem);
